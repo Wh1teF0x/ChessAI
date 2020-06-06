@@ -10,7 +10,7 @@ const Settings = (props) => {
             label: 'Легко',
         },
         {
-            value: 5,
+            value: 3,
             label: 'Сложно',
         },
     ];
@@ -25,7 +25,7 @@ const Settings = (props) => {
                     onChange={props.levelChange}
                     step={1}
                     min={1}
-                    max={5}
+                    max={3}
                     marks={marks}
                     id="level"
                     aria-labelledby="level-slider"

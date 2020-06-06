@@ -18,7 +18,6 @@ const initialState = {
     pieceSquare: "",
     square: "",
     history: [],
-    prevState: undefined,
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -35,15 +34,22 @@ export const gameReducer = (state = initialState, action) => {
                 level: state.level,
             };
         case GAME_UNDO:
-            if (state.prevState) {
-                return {
-                    ...state.prevState,
-                };
-            } else {
-                return {
-                    ...state
-                }
+            let game = state.game;
+            game.undo();
+            if (game.turn() === 'b') {
+                game.undo();
             }
+            let fen = game.fen();
+            let history = game.history({verbose: true});
+            return {
+                ...state,
+                dropSquareStyle: {},
+                squareStyles: {},
+                pieceSquare: "",
+                game: game,
+                fen: fen,
+                history: history,
+            };
         case GAME_LEVEL_CHANGE:
             return {
                 ...state,
@@ -55,15 +61,10 @@ export const gameReducer = (state = initialState, action) => {
                 theme: !state.theme,
             };
         case GAME_UPDATE_STATE:
-            let prevState = state.prevState;
-            if (action.newState.fen) {
-                prevState = state;
-            }
             return {
                 ...state,
                 ...action.newState,
-                fen: action.newState.hasOwnProperty("game") ? action.newState.game.fen() : state.game.fen(),
-                prevState: prevState,
+                fen: action.newState.hasOwnProperty("fen") ? action.newState.fen : state.game.fen(),
             };
         default:
             return state
