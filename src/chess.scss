@@ -31,7 +31,39 @@
 
 .main {
   display: flex;
-  height: 85%;
+  height: 82%;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: var(--surface-font-color);
+  height: 3%;
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    align-self: center;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:after {
+      background-color: var(--surface-font-color);
+      display: block;
+      content: "";
+      height: 2px;
+      width: 0;
+      transition: width .3s ease-in-out;
+    }
+
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+    }
+  }
 }
 
 .board {

@@ -6,6 +6,7 @@ import {getGameState, getLevel, getTheme, getMove, getLoading} from "../Reducers
 import AiChessboard from "./board"
 import Settings from "../Menus/settings"
 import Logo from "../Menus/logo"
+import Footer from "../Menus/footer"
 import {getNextMove} from "../Actions/bot";
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
                         undoTurn={this.props.undoTurn}
                     />
                 </div>
+                <Footer/>
             </div>
         );
     }
