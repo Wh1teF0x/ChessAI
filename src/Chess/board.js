@@ -144,9 +144,10 @@ class Board extends React.Component {
             <div className="board">
                 {
                     gameOver
-                        ? <div className="banner">
-                            <span className="banner__text">Game is over {gameOverText}</span>
-                        </div>
+                        ? <>
+                            <div className="banner">{gameOverText}</div>
+                            <span className="banner__text">{gameOverText}</span>
+                        </>
                         : <></>
                 }
                 <Chessboard

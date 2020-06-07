@@ -77,23 +77,35 @@
 
   div[data-testid='white-square'] {
     background-color: var(--primary-color) !important;
+
+    > div > div {
+      color: var(--primary-font-color) !important;
+    }
   }
 
   div[data-testid='black-square'] {
     background-color: var(--secondary-color) !important;
+
+    > div > div {
+      color: var(--secondary-font-color) !important;
+    }
   }
 
   .banner {
     position: absolute;
     padding: 10px;
-    opacity: 0.5;
-    z-index: 1;
+    opacity: 0.8;
+    z-index: 999;
     background-color: var(--surface-color);
+    color: var(--surface-color);
 
     &__text {
+      position: absolute;
+      z-index: 1000;
       color: var(--surface-font-color);
     }
   }
+
 }
 
 .loading {

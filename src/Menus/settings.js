@@ -7,18 +7,18 @@ const Settings = (props) => {
     const marks = [
         {
             value: 1,
-            label: 'Легко',
+            label: 'Easy',
         },
         {
             value: 3,
-            label: 'Сложно',
+            label: 'Hard',
         },
     ];
     return (
         <div className="content__plate settings">
             <div className="settings__slider">
                 <Typography id="level-slider" gutterBottom>
-                    Сложность
+                    Level
                 </Typography>
                 <Slider
                     value={props.level}
@@ -42,7 +42,7 @@ const Settings = (props) => {
                         name="lightTheme"
                         color="primary"
                     />}
-                    label="Светлая тема"
+                    label="Light theme"
                 />
             </div>
         </div>
